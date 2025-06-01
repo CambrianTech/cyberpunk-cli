@@ -1,0 +1,148 @@
+{
+  "themes": {
+    "loki": {
+      "name": "loki",
+      "display_name": "Loki",
+      "description": "Nordic mythology terminal interface",
+      "colors": {
+        "primary": "#00ff00",
+        "secondary": "#008800", 
+        "accent": "#ffff00",
+        "background": "#001100",
+        "panel_bg": "#002200",
+        "accent_bg": "#111100",
+        "output_bg": "#111111",
+        "footer_bg": "rgba(0, 17, 0, 0.8)",
+        "warning": "#ff0000",
+        "success": "#00ff00",
+        "border": "#00ff00",
+        "selected": "#000000",
+        "selected_bg": "#00ff00",
+        "dim": "#1c5f1c"
+      },
+      "ascii_art": {
+        "logo": "╔═══════════════════════════════════════════════════════════════════════════╗\n║                                                                           ║\n║    ██╗      ██████╗ ██╗  ██╗██╗    ████████╗███████╗██████╗ ███╗   ███╗   ║\n║    ██║     ██╔═══██╗██║ ██╔╝██║    ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║   ║\n║    ██║     ██║   ██║█████╔╝ ██║       ██║   █████╗  ██████╔╝██╔████╔██║   ║\n║    ██║     ██║   ██║██╔═██╗ ██║       ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║   ║\n║    ███████╗╚██████╔╝██║  ██╗██║       ██║   ███████╗██║  ██║██║ ╚═╝ ██║   ║\n║    ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝   ║\n║                                                                           ║\n╚═══════════════════════════════════════════════════════════════════════════╝",
+        "separator": "⚡",
+        "bullet": "▶",
+        "frame_top": "⟨",
+        "frame_bottom": "⟩"
+      },
+      "terminology": {
+        "system_name": "ASGARD TERMINAL SYSTEM",
+        "version": "v3.0",
+        "controls_title": "TRICKSTER CONTROLS",
+        "interface_title": "SHAPE-SHIFTER INTERFACE",
+        "loading": "⚡ SUMMONING LOKI INTERFACE ⚡",
+        "goodbye": "⚡ MISCHIEF MANAGED - LOKI OUT ⚡"
+      }
+    },
+    "matrix": {
+      "name": "matrix",
+      "display_name": "Matrix",
+      "description": "Digital rain cyberpunk interface",
+      "colors": {
+        "primary": "#00ff00",
+        "secondary": "#008800",
+        "accent": "#ffffff", 
+        "background": "#000000",
+        "panel_bg": "#001100",
+        "accent_bg": "#000011",
+        "output_bg": "#111111",
+        "footer_bg": "rgba(0, 0, 0, 0.8)",
+        "warning": "#ff0000",
+        "success": "#00ff00",
+        "border": "#00ff00",
+        "selected": "#000000",
+        "selected_bg": "#00ff00",
+        "dim": "#004400"
+      },
+      "ascii_art": {
+        "logo": "╔═══════════════════════════════════════════════════════════════════════════╗\n║  ███╗   ███╗ █████╗ ████████╗██████╗ ██╗██╗  ██╗    ████████╗███████╗██████╗  ║\n║  ████╗ ████║██╔══██╗╚══██╔══╝██╔══██╗██║╚██╗██╔╝    ╚══██╔══╝██╔════╝██╔══██╗ ║\n║  ██╔████╔██║███████║   ██║   ██████╔╝██║ ╚███╔╝        ██║   █████╗  ██████╔╝ ║\n║  ██║╚██╔╝██║██╔══██║   ██║   ██╔══██╗██║ ██╔██╗        ██║   ██╔══╝  ██╔══██╗ ║\n║  ██║ ╚═╝ ██║██║  ██║   ██║   ██║  ██║██║██╔╝ ██╗       ██║   ███████╗██║  ██║ ║\n║  ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝       ╚═╝   ╚══════╝╚═╝  ╚═╝ ║\n╚═══════════════════════════════════════════════════════════════════════════╝",
+        "separator": "▦",
+        "bullet": "►",
+        "frame_top": "▦",
+        "frame_bottom": "▦"
+      },
+      "terminology": {
+        "system_name": "NEURAL MATRIX TERMINAL",
+        "version": "v1.0",
+        "controls_title": "MATRIX CONTROLS",
+        "interface_title": "NEURAL INTERFACE",
+        "loading": "▦ ENTERING THE MATRIX ▦",
+        "goodbye": "▦ DISCONNECTING FROM MATRIX ▦"
+      }
+    },
+    "fallout": {
+      "name": "fallout", 
+      "display_name": "Fallout",
+      "description": "Vault-Tec terminal interface",
+      "colors": {
+        "primary": "#ffcc00",
+        "secondary": "#cc9900",
+        "accent": "#ffffff",
+        "background": "#110800",
+        "panel_bg": "#221100", 
+        "accent_bg": "#111000",
+        "output_bg": "#1a1100",
+        "footer_bg": "rgba(17, 8, 0, 0.8)",
+        "warning": "#ff0000",
+        "success": "#00ff00",
+        "border": "#ffcc00",
+        "selected": "#000000",
+        "selected_bg": "#ffcc00",
+        "dim": "#665500"
+      },
+      "ascii_art": {
+        "logo": "╔═══════════════════════════════════════════════════════════════════════════╗\n║    █████████╗███╗   ███╗ █████╗ ██████╗ ████████╗      ██████╗██╗         ║\n║    ██╔══════╝████╗ ████║██╔══██╗██╔══██╗╚══██╔══╝     ██╔════╝██║         ║\n║    ███████╗ ██╔████╔██║███████║██████╔╝   ██║  █████╗██║     ██║         ║\n║    ╚════██║ ██║╚██╔╝██║██╔══██║██╔══██╗   ██║  ╚════╝██║     ██║         ║\n║    ███████║ ██║ ╚═╝ ██║██║  ██║██║  ██║   ██║        ╚██████╗██║         ║\n║    ╚══════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝         ╚═════╝╚═╝         ║\n╚═══════════════════════════════════════════════════════════════════════════╝",
+        "separator": "***",
+        "bullet": "█",
+        "frame_top": "█",
+        "frame_bottom": "█"
+      },
+      "terminology": {
+        "system_name": "VAULT-TEC TERMINAL",
+        "version": "v2.077",
+        "controls_title": "TERMINAL CONTROLS",
+        "interface_title": "VAULT-TEC INTERFACE PROTOCOL",
+        "loading": "*** INITIALIZING VAULT-TEC TERMINAL ***",
+        "goodbye": "*** HAVE A PLEASANT DAY, VAULT DWELLER ***"
+      }
+    },
+    "tron": {
+      "name": "tron",
+      "display_name": "Tron", 
+      "description": "Neon cyberpunk grid interface",
+      "colors": {
+        "primary": "#00ccff",
+        "secondary": "#0099cc",
+        "accent": "#ffffff",
+        "background": "#000011",
+        "panel_bg": "#001122",
+        "accent_bg": "#000044", 
+        "output_bg": "#111122",
+        "footer_bg": "rgba(0, 0, 17, 0.8)",
+        "warning": "#ff0000",
+        "success": "#00ff00",
+        "border": "#00ccff",
+        "selected": "#000000",
+        "selected_bg": "#00ccff",
+        "dim": "#004466"
+      },
+      "ascii_art": {
+        "logo": "╔═══════════════════════════════════════════════════════════════════════════╗\n║  ████████╗██████╗  ██████╗ ███╗   ██╗    ████████╗███████╗██████╗ ███╗   ███╗ ║\n║  ╚══██╔══╝██╔══██╗██╔═══██╗████╗  ██║    ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║ ║\n║     ██║   ██████╔╝██║   ██║██╔██╗ ██║       ██║   █████╗  ██████╔╝██╔████╔██║ ║\n║     ██║   ██╔══██╗██║   ██║██║╚██╗██║       ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║ ║\n║     ██║   ██║  ██║╚██████╔╝██║ ╚████║       ██║   ███████╗██║  ██║██║ ╚═╝ ██║ ║\n║     ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ║\n╚═══════════════════════════════════════════════════════════════════════════╝",
+        "separator": "◊",
+        "bullet": "▸",
+        "frame_top": "◊",
+        "frame_bottom": "◊"
+      },
+      "terminology": {
+        "system_name": "TRON GRID TERMINAL",
+        "version": "v2.0",
+        "controls_title": "GRID CONTROLS", 
+        "interface_title": "LIGHT CYCLE INTERFACE",
+        "loading": "◊ ENTERING THE GRID ◊",
+        "goodbye": "◊ DISCONNECTING FROM GRID ◊"
+      }
+    }
+  }
+}

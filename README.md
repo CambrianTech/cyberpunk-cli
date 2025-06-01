@@ -14,7 +14,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-green.svg)](https://www.python.org/downloads/)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/Cambrian/cyberpunk-cli)
 
-**[TRY LIVE DEMO](https://cambrian.github.io/cyberpunk-cli/)**
+**[TRY LIVE DEMO](https://cambriantech.github.io/cyberpunk-cli/)**
 
 </div>
 

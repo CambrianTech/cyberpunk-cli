@@ -103,9 +103,9 @@ menu = CyberpunkMenu("My App", theme="loki")
 menu.add_option("deploy", "Deploy", "Deploy to production")
 choice = menu.run()`,
 
-                web_framework: `<!-- Use on websites and web applications -->
+                web_framework: \`<!-- Use on websites and web applications -->
 <link rel="stylesheet" href="cyberpunk-web.css">
-<script src="cyberpunk-web.js"></script>
+<script src="cyberpunk-web.js"><\/script>
 
 <div id="my-terminal"></div>
 
@@ -125,7 +125,7 @@ const console = new CyberpunkConsole('my-console', {
     theme: 'matrix',
     title: 'Debug Console'
 });
-</script>`,
+<\/script>\`,
 
                 zero_effort: `# Zero-effort Click enhancement
 import cyberpunk_cli  # Just add this line!

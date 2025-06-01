@@ -7,6 +7,7 @@ class CyberpunkTerminal {
     constructor(containerId, options = {}) {
         this.container = document.getElementById(containerId);
         this.theme = options.theme || 'loki';
+        this.title = options.title || 'Cyberpunk Terminal';
         this.themeChanging = options.themeChanging !== false;
         this.mouseSupport = options.mouseSupport !== false;
         this.keyboardShortcuts = options.keyboardShortcuts !== false;
@@ -14,8 +15,56 @@ class CyberpunkTerminal {
         this.menuItems = [];
         this.selectedIndex = 0;
         this.output = [];
+        this.themeConfig = null;
         
-        this.init();
+        this.loadThemeConfig().then(() => this.init());
+    }
+    
+    async loadThemeConfig() {
+        try {
+            // Try to load from the same source as Python
+            const response = await fetch('themes/theme_config.json');
+            this.themeConfig = await response.json();
+        } catch (error) {
+            // Fallback to embedded config
+            this.themeConfig = this.getEmbeddedThemeConfig();
+        }
+    }
+    
+    getEmbeddedThemeConfig() {
+        // Embedded version of the theme config for when JSON file isn't available
+        return {
+            "themes": {
+                "loki": {
+                    "display_name": "Loki",
+                    "terminology": {
+                        "system_name": "ASGARD TERMINAL SYSTEM",
+                        "version": "v3.0"
+                    }
+                },
+                "matrix": {
+                    "display_name": "Matrix", 
+                    "terminology": {
+                        "system_name": "NEURAL MATRIX TERMINAL",
+                        "version": "v1.0"
+                    }
+                },
+                "fallout": {
+                    "display_name": "Fallout",
+                    "terminology": {
+                        "system_name": "VAULT-TEC TERMINAL", 
+                        "version": "v2.077"
+                    }
+                },
+                "tron": {
+                    "display_name": "Tron",
+                    "terminology": {
+                        "system_name": "TRON GRID TERMINAL",
+                        "version": "v2.0"
+                    }
+                }
+            }
+        };
     }
     
     init() {
