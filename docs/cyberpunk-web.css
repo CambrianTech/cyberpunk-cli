@@ -1,0 +1,265 @@
+/* Cyberpunk CLI Web Framework */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400&display=swap');
+
+/* Base Terminal Styles */
+.cyberpunk-terminal {
+    font-family: 'Share Tech Mono', monospace;
+    background: var(--cyberpunk-bg);
+    color: var(--cyberpunk-primary);
+    overflow: hidden;
+    cursor: none;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cyberpunk-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border: 2px solid var(--cyberpunk-primary);
+    padding: 10px;
+    background: var(--cyberpunk-panel-bg);
+}
+
+.cyberpunk-logo {
+    font-size: 12px;
+    line-height: 1.2;
+    color: var(--cyberpunk-primary);
+    white-space: pre;
+}
+
+.cyberpunk-subtitle {
+    margin: 10px 0;
+    color: var(--cyberpunk-accent);
+    border: 1px solid var(--cyberpunk-accent);
+    padding: 5px;
+    background: var(--cyberpunk-accent-bg);
+}
+
+.cyberpunk-menu {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.cyberpunk-menu-item {
+    padding: 10px 20px;
+    margin: 5px 0;
+    background: var(--cyberpunk-panel-bg);
+    border: 1px solid var(--cyberpunk-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cyberpunk-menu-item:hover,
+.cyberpunk-menu-item.selected {
+    background: var(--cyberpunk-primary);
+    color: var(--cyberpunk-bg);
+    box-shadow: 0 0 20px var(--cyberpunk-primary);
+}
+
+.cyberpunk-theme-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--cyberpunk-panel-bg);
+    border: 2px solid var(--cyberpunk-primary);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.cyberpunk-btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px 10px;
+    background: var(--cyberpunk-bg);
+    border: 1px solid var(--cyberpunk-primary);
+    color: var(--cyberpunk-primary);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.cyberpunk-btn:hover {
+    background: var(--cyberpunk-primary);
+    color: var(--cyberpunk-bg);
+    box-shadow: 0 0 10px var(--cyberpunk-primary);
+}
+
+.cyberpunk-output {
+    margin: 20px 0;
+    padding: 15px;
+    background: var(--cyberpunk-output-bg);
+    border: 1px solid var(--cyberpunk-primary);
+    min-height: 100px;
+}
+
+.cyberpunk-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background: var(--cyberpunk-primary);
+    animation: cyberpunk-blink 1s infinite;
+}
+
+.cyberpunk-footer {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+    border: 1px solid var(--cyberpunk-primary);
+    padding: 10px;
+    background: var(--cyberpunk-footer-bg);
+}
+
+.cyberpunk-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background: var(--cyberpunk-panel-bg);
+    border: 2px solid var(--cyberpunk-primary);
+    color: var(--cyberpunk-primary);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.cyberpunk-link:hover {
+    background: var(--cyberpunk-primary);
+    color: var(--cyberpunk-bg);
+    box-shadow: 0 0 20px var(--cyberpunk-primary);
+}
+
+@keyframes cyberpunk-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Theme Variables */
+
+/* Loki Theme - Green/Gold Nordic */
+.cyberpunk-theme-loki {
+    --cyberpunk-bg: #001100;
+    --cyberpunk-primary: #00ff00;
+    --cyberpunk-accent: #ffff00;
+    --cyberpunk-panel-bg: #002200;
+    --cyberpunk-accent-bg: #111100;
+    --cyberpunk-output-bg: #111;
+    --cyberpunk-footer-bg: rgba(0, 17, 0, 0.8);
+}
+
+/* Matrix Theme - Digital Rain */
+.cyberpunk-theme-matrix {
+    --cyberpunk-bg: #000;
+    --cyberpunk-primary: #00ff00;
+    --cyberpunk-accent: #ffffff;
+    --cyberpunk-panel-bg: #001100;
+    --cyberpunk-accent-bg: #000011;
+    --cyberpunk-output-bg: #111;
+    --cyberpunk-footer-bg: rgba(0, 0, 0, 0.8);
+}
+
+/* Fallout Theme - Vault-Tec Amber */
+.cyberpunk-theme-fallout {
+    --cyberpunk-bg: #110800;
+    --cyberpunk-primary: #ffcc00;
+    --cyberpunk-accent: #ffffff;
+    --cyberpunk-panel-bg: #221100;
+    --cyberpunk-accent-bg: #111000;
+    --cyberpunk-output-bg: #1a1100;
+    --cyberpunk-footer-bg: rgba(17, 8, 0, 0.8);
+}
+
+/* Tron Theme - Neon Blue Grid */
+.cyberpunk-theme-tron {
+    --cyberpunk-bg: #000011;
+    --cyberpunk-primary: #00ccff;
+    --cyberpunk-accent: #ffffff;
+    --cyberpunk-panel-bg: #001122;
+    --cyberpunk-accent-bg: #000044;
+    --cyberpunk-output-bg: #111122;
+    --cyberpunk-footer-bg: rgba(0, 0, 17, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cyberpunk-theme-selector {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .cyberpunk-link {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    
+    .cyberpunk-footer {
+        position: relative;
+        bottom: 0;
+        margin-top: 20px;
+    }
+    
+    .cyberpunk-terminal {
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+/* Custom Console Widget */
+.cyberpunk-console {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    background: var(--cyberpunk-bg);
+    border: 2px solid var(--cyberpunk-primary);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cyberpunk-console-header {
+    background: var(--cyberpunk-panel-bg);
+    padding: 10px;
+    border-bottom: 1px solid var(--cyberpunk-primary);
+    display: flex;
+    justify-content: between;
+}
+
+.cyberpunk-console-title {
+    color: var(--cyberpunk-primary);
+    font-weight: bold;
+}
+
+.cyberpunk-console-controls {
+    margin-left: auto;
+}
+
+.cyberpunk-console-body {
+    padding: 15px;
+    min-height: 200px;
+    background: var(--cyberpunk-output-bg);
+}
+
+.cyberpunk-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--cyberpunk-primary);
+    font-family: inherit;
+    outline: none;
+    font-size: inherit;
+}
+
+.cyberpunk-input::placeholder {
+    color: var(--cyberpunk-accent);
+    opacity: 0.6;
+}

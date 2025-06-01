@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Web Framework Examples</title>
+    <link rel="stylesheet" href="cyberpunk-web.css">
+    <style>
+        body { margin: 0; background: #000; color: #00ff00; }
+        .example-section {
+            margin: 40px 20px;
+            padding: 20px;
+            border: 1px solid #00ff00;
+        }
+        .code-example {
+            background: #111;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid #00ff00;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+        .demo-container {
+            margin: 20px 0;
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body class="cyberpunk-theme-loki">
+    <div style="padding: 20px; text-align: center;">
+        <h1>Cyberpunk Web Framework Examples</h1>
+        <p>Create terminal interfaces for your websites that match the Python package themes</p>
+        <a href="index.html" style="color: #00ff00;">← Back to Demo</a> | 
+        <a href="https://github.com/Cambrian/cyberpunk-cli" style="color: #00ff00;">GitHub Repo →</a>
+    </div>
+
+    <div class="example-section">
+        <h2>1. Full Terminal Interface</h2>
+        <p>Create a complete cyberpunk terminal for your web application:</p>
+        
+        <div class="code-example">
+&lt;!-- HTML --&gt;
+&lt;link rel="stylesheet" href="cyberpunk-web.css"&gt;
+&lt;script src="cyberpunk-web.js"&gt;&lt;/script&gt;
+
+&lt;div id="my-terminal"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+const terminal = new CyberpunkTerminal('my-terminal', {
+    theme: 'loki',
+    themeChanging: true
+});
+
+terminal.setTitle('My Cyberpunk App')
+    .addMenuItem('deploy', 'Deploy to Production', 'Deploy your application', () =&gt; {
+        terminal.log('🚀 Deploying to production...');
+        terminal.log('✅ Deployment successful!');
+    })
+    .addMenuItem('monitor', 'System Monitoring', 'View system metrics', () =&gt; {
+        terminal.log('📊 System Status: All systems operational');
+        terminal.log('💾 Memory: 2.1GB / 8GB');
+        terminal.log('⚡ CPU: 45% utilization');
+    })
+    .addSeparator('Database')
+    .addMenuItem('backup', 'Database Backup', 'Create database backup', () =&gt; {
+        terminal.log('💾 Creating database backup...');
+        setTimeout(() =&gt; terminal.log('✅ Backup complete!'), 2000);
+    });
+&lt;/script&gt;
+        </div>
+        
+        <div class="demo-container">
+            <div id="terminal1"></div>
+        </div>
+    </div>
+
+    <div class="example-section">
+        <h2>2. Simple Console Widget</h2>
+        <p>Embed a cyberpunk console anywhere on your site:</p>
+        
+        <div class="code-example">
+&lt;div id="my-console" style="max-width: 600px;"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+const console = new CyberpunkConsole('my-console', {
+    theme: 'matrix',
+    title: 'Development Console'
+});
+
+console.log('System initialized');
+console.log('Ready for commands');
+&lt;/script&gt;
+        </div>
+        
+        <div class="demo-container">
+            <div id="console1" style="max-width: 600px;"></div>
+        </div>
+    </div>
+
+    <div class="example-section">
+        <h2>3. Game Interface</h2>
+        <p>Perfect for game development or interactive experiences:</p>
+        
+        <div class="code-example">
+const gameTerminal = new CyberpunkTerminal('game-interface', {
+    theme: 'tron',
+    themeChanging: false
+});
+
+gameTerminal.setTitle('Cyberpunk Game Console')
+    .addMenuItem('newgame', 'New Game', 'Start a new cyberpunk adventure', startNewGame)
+    .addMenuItem('loadgame', 'Load Game', 'Continue your journey', loadGame)
+    .addMenuItem('settings', 'Settings', 'Configure game options', showSettings)
+    .addSeparator('Debug')
+    .addMenuItem('godmode', 'God Mode', 'Toggle invincibility', toggleGodMode)
+    .addMenuItem('teleport', 'Teleport', 'Teleport to location', showTeleportMenu);
+        </div>
+        
+        <div class="demo-container">
+            <div id="terminal2"></div>
+        </div>
+    </div>
+
+    <div class="example-section">
+        <h2>4. DevOps Dashboard</h2>
+        <p>Create professional DevOps tools with cyberpunk aesthetics:</p>
+        
+        <div class="code-example">
+const devopsTerminal = new CyberpunkTerminal('devops-dashboard', {
+    theme: 'fallout'
+});
+
+devopsTerminal.setTitle('DevOps Command Center')
+    .addMenuItem('status', 'System Status', 'Check all services', checkSystemStatus)
+    .addMenuItem('deploy', 'Deploy', 'Deploy to environments', showDeployMenu)
+    .addMenuItem('logs', 'View Logs', 'Application and system logs', viewLogs)
+    .addSeparator('Monitoring')
+    .addMenuItem('metrics', 'Metrics', 'Performance metrics', showMetrics)
+    .addMenuItem('alerts', 'Alerts', 'Active alerts and warnings', showAlerts);
+        </div>
+        
+        <div class="demo-container">
+            <div id="terminal3"></div>
+        </div>
+    </div>
+
+    <div class="example-section">
+        <h2>5. Theme Customization</h2>
+        <p>All themes from the Python package are available:</p>
+        
+        <div class="code-example">
+// Loki Theme - Green/Gold Nordic
+terminal.setTheme('loki');
+
+// Matrix Theme - Digital Rain
+terminal.setTheme('matrix');
+
+// Fallout Theme - Vault-Tec Amber
+terminal.setTheme('fallout');
+
+// Tron Theme - Neon Blue Grid
+terminal.setTheme('tron');
+
+// Enable/disable theme switching
+const terminal = new CyberpunkTerminal('container', {
+    theme: 'loki',
+    themeChanging: true  // Allow Ctrl+T switching
+});
+        </div>
+        
+        <div style="display: flex; gap: 10px; margin: 20px 0;">
+            <button class="cyberpunk-btn" onclick="setAllThemes('loki')">Loki</button>
+            <button class="cyberpunk-btn" onclick="setAllThemes('matrix')">Matrix</button>
+            <button class="cyberpunk-btn" onclick="setAllThemes('fallout')">Fallout</button>
+            <button class="cyberpunk-btn" onclick="setAllThemes('tron')">Tron</button>
+        </div>
+    </div>
+
+    <div class="example-section">
+        <h2>Installation</h2>
+        <div class="code-example">
+&lt;!-- Include CSS and JS --&gt;
+&lt;link rel="stylesheet" href="https://cambrian.github.io/cyberpunk-cli/cyberpunk-web.css"&gt;
+&lt;script src="https://cambrian.github.io/cyberpunk-cli/cyberpunk-web.js"&gt;&lt;/script&gt;
+
+&lt;!-- Or download and host locally --&gt;
+&lt;link rel="stylesheet" href="css/cyberpunk-web.css"&gt;
+&lt;script src="js/cyberpunk-web.js"&gt;&lt;/script&gt;
+        </div>
+    </div>
+
+    <script src="cyberpunk-web.js"></script>
+    <script>
+        // Initialize all examples
+        
+        // Example 1: Full Terminal
+        const terminal1 = new CyberpunkTerminal('terminal1', {
+            theme: 'loki',
+            themeChanging: true
+        });
+
+        terminal1.setTitle('Example Cyberpunk App')
+            .addMenuItem('deploy', 'Deploy to Production', 'Deploy your application', () => {
+                terminal1.log('Deploying to production...');
+                setTimeout(() => terminal1.log('Deployment successful!'), 1500);
+            })
+            .addMenuItem('monitor', 'System Monitoring', 'View system metrics', () => {
+                terminal1.log('System Status: All systems operational');
+                terminal1.log('Memory: 2.1GB / 8GB');
+                terminal1.log('CPU: 45% utilization');
+            })
+            .addSeparator('Database')
+            .addMenuItem('backup', 'Database Backup', 'Create database backup', () => {
+                terminal1.log('Creating database backup...');
+                setTimeout(() => terminal1.log('Backup complete!'), 2000);
+            });
+
+        // Example 2: Console Widget
+        const console1 = new CyberpunkConsole('console1', {
+            theme: 'matrix',
+            title: 'Development Console'
+        });
+
+        console1.log('System initialized');
+        console1.log('Ready for commands');
+        console1.log('Try commands: help, clear, theme [name]');
+
+        // Example 3: Game Interface
+        const terminal2 = new CyberpunkTerminal('terminal2', {
+            theme: 'tron',
+            themeChanging: false
+        });
+
+        terminal2.setTitle('Cyberpunk Game Console')
+            .addMenuItem('newgame', 'New Game', 'Start a new cyberpunk adventure', () => {
+                terminal2.log('Initializing new game...');
+                terminal2.log('Loading cyberpunk world...');
+                terminal2.log('Welcome to the Matrix, Neo.');
+            })
+            .addMenuItem('loadgame', 'Load Game', 'Continue your journey', () => {
+                terminal2.log('Loading save file...');
+                terminal2.log('Game loaded: Level 42 - Downtown');
+            })
+            .addMenuItem('settings', 'Settings', 'Configure game options', () => {
+                terminal2.log('Graphics: Ultra');
+                terminal2.log('Audio: Surround Sound');
+                terminal2.log('Difficulty: Hardcore');
+            })
+            .addSeparator('Debug')
+            .addMenuItem('godmode', 'God Mode', 'Toggle invincibility', () => {
+                terminal2.log('God mode ACTIVATED');
+                terminal2.log('Player is now invincible!');
+            });
+
+        // Example 4: DevOps Dashboard
+        const terminal3 = new CyberpunkTerminal('terminal3', {
+            theme: 'fallout'
+        });
+
+        terminal3.setTitle('DevOps Command Center')
+            .addMenuItem('status', 'System Status', 'Check all services', () => {
+                terminal3.log('Checking system status...');
+                terminal3.log('Web Server: ONLINE');
+                terminal3.log('Database: ONLINE');
+                terminal3.log('Cache: ONLINE');
+                terminal3.log('All systems operational');
+            })
+            .addMenuItem('deploy', 'Deploy', 'Deploy to environments', () => {
+                terminal3.log('Select deployment target:');
+                terminal3.log('1. Staging');
+                terminal3.log('2. Production');
+                terminal3.log('3. Development');
+            })
+            .addMenuItem('logs', 'View Logs', 'Application and system logs', () => {
+                terminal3.log('Fetching recent logs...');
+                terminal3.log('[INFO] Application started successfully');
+                terminal3.log('[WARN] High memory usage detected');
+                terminal3.log('[INFO] Database connection established');
+            })
+            .addSeparator('Monitoring')
+            .addMenuItem('metrics', 'Metrics', 'Performance metrics', () => {
+                terminal3.log('Performance Metrics:');
+                terminal3.log('Response Time: 150ms avg');
+                terminal3.log('Throughput: 1,200 req/min');
+                terminal3.log('Error Rate: 0.02%');
+            });
+
+        // Global theme switcher
+        function setAllThemes(theme) {
+            document.body.className = `cyberpunk-theme-${theme}`;
+            terminal1.setTheme(theme);
+            console1.setTheme(theme);
+            terminal2.setTheme(theme);
+            terminal3.setTheme(theme);
+        }
+
+        // Global keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 't') {
+                e.preventDefault();
+                const themes = ['loki', 'matrix', 'fallout', 'tron'];
+                const currentTheme = document.body.className.replace('cyberpunk-theme-', '');
+                const currentIndex = themes.indexOf(currentTheme);
+                const nextIndex = (currentIndex + 1) % themes.length;
+                setAllThemes(themes[nextIndex]);
+            }
+        });
+    </script>
+</body>
+</html>

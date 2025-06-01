@@ -243,7 +243,7 @@
         
         <div class="menu">
             <div class="menu-item" onclick="selectOption('install')">
-                <span>▶ Install Package</span>
+                <span>▶ Install Python Package</span>
                 <span>pip install cyberpunk-cli</span>
             </div>
             <div class="menu-item" onclick="selectOption('zero_effort')">
@@ -258,13 +258,17 @@
                 <span>▶ Click Integration</span>
                 <span>Auto-enhance existing CLIs</span>
             </div>
+            <div class="menu-item" onclick="selectOption('web_framework')">
+                <span>▶ Web Framework</span>
+                <span>Use on websites and web apps</span>
+            </div>
             <div class="menu-item" onclick="selectOption('themes')">
                 <span>▶ Theme System</span>
                 <span>Loki, Matrix, Fallout, Tron</span>
             </div>
             <div class="menu-item" onclick="selectOption('examples')">
-                <span>▶ Code Examples</span>
-                <span>DevOps tools, game consoles</span>
+                <span>▶ Live Examples</span>
+                <span>See web framework in action</span>
             </div>
             <div class="menu-item" onclick="selectOption('github')">
                 <span>▶ View Source</span>
@@ -321,6 +325,30 @@ from cyberpunk_cli import CyberpunkMenu
 menu = CyberpunkMenu("My App", theme="loki")
 menu.add_option("deploy", "Deploy", "Deploy to production")
 choice = menu.run()`,
+
+            web_framework: `<!-- Use on websites and web applications -->
+<link rel="stylesheet" href="cyberpunk-web.css">
+<script src="cyberpunk-web.js"></script>
+
+<div id="my-terminal"></div>
+
+<script>
+const terminal = new CyberpunkTerminal('my-terminal', {
+    theme: 'loki',
+    themeChanging: true
+});
+
+terminal.setTitle('My Web App')
+    .addMenuItem('dashboard', 'Dashboard', 'View main dashboard', showDashboard)
+    .addMenuItem('settings', 'Settings', 'Application settings', showSettings)
+    .addMenuItem('logout', 'Logout', 'Sign out of application', logout);
+
+// Or create console widgets
+const console = new CyberpunkConsole('my-console', {
+    theme: 'matrix',
+    title: 'Debug Console'
+});
+</script>`,
 
             zero_effort: `# Zero-effort Click enhancement
 import cyberpunk_cli  # Just add this line!
@@ -453,6 +481,12 @@ https://github.com/Cambrian/cyberpunk-cli
             if (option === 'github') {
                 setTimeout(() => {
                     window.open('https://github.com/Cambrian/cyberpunk-cli', '_blank');
+                }, 1000);
+            }
+            
+            if (option === 'examples') {
+                setTimeout(() => {
+                    window.location.href = 'examples.html';
                 }, 1000);
             }
         }
