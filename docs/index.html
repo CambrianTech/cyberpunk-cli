@@ -4,223 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyberpunk CLI - Live Demo</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Share Tech Mono', monospace;
-            background: #000;
-            color: #00ff00;
-            overflow: hidden;
-            cursor: none;
-        }
-        
-        .terminal {
-            width: 100vw;
-            height: 100vh;
-            background: #000;
-            padding: 20px;
-            overflow-y: auto;
-            position: relative;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            border: 2px solid #00ff00;
-            padding: 10px;
-            background: #001100;
-        }
-        
-        .logo {
-            font-size: 12px;
-            line-height: 1.2;
-            color: #00ff00;
-            white-space: pre;
-        }
-        
-        .subtitle {
-            margin: 10px 0;
-            color: #ffff00;
-            border: 1px solid #ffff00;
-            padding: 5px;
-            background: #111100;
-        }
-        
-        .menu {
-            margin: 20px auto;
-            max-width: 800px;
-        }
-        
-        .menu-item {
-            padding: 10px 20px;
-            margin: 5px 0;
-            background: #001100;
-            border: 1px solid #00ff00;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .menu-item:hover {
-            background: #00ff00;
-            color: #000;
-            box-shadow: 0 0 20px #00ff00;
-        }
-        
-        .menu-item.selected {
-            background: #00ff00;
-            color: #000;
-            box-shadow: 0 0 20px #00ff00;
-        }
-        
-        .theme-selector {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #001100;
-            border: 2px solid #00ff00;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        
-        .theme-btn {
-            display: block;
-            width: 100%;
-            margin: 5px 0;
-            padding: 5px 10px;
-            background: #000;
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        
-        .theme-btn:hover {
-            background: #00ff00;
-            color: #000;
-        }
-        
-        .output {
-            margin: 20px 0;
-            padding: 15px;
-            background: #111;
-            border: 1px solid #00ff00;
-            min-height: 100px;
-        }
-        
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background: #00ff00;
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        
-        .matrix {
-            background: #000;
-            color: #00ff00;
-        }
-        
-        .loki {
-            background: #001100;
-            color: #00ff00;
-        }
-        
-        .loki .header, .loki .menu-item, .loki .theme-selector {
-            border-color: #00ff00;
-        }
-        
-        .loki .subtitle {
-            color: #ffff00;
-            border-color: #ffff00;
-        }
-        
-        .fallout {
-            background: #110800;
-            color: #ffcc00;
-        }
-        
-        .fallout .header, .fallout .menu-item, .fallout .theme-selector {
-            border-color: #ffcc00;
-        }
-        
-        .fallout .menu-item:hover, .fallout .theme-btn:hover {
-            background: #ffcc00;
-            color: #000;
-        }
-        
-        .tron {
-            background: #000011;
-            color: #00ccff;
-        }
-        
-        .tron .header, .tron .menu-item, .tron .theme-selector {
-            border-color: #00ccff;
-        }
-        
-        .tron .menu-item:hover, .tron .theme-btn:hover {
-            background: #00ccff;
-            color: #000;
-        }
-        
-        .footer {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            text-align: center;
-            border: 1px solid;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.8);
-        }
-        
-        .github-link {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            padding: 10px 15px;
-            background: #001100;
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .github-link:hover {
-            background: #00ff00;
-            color: #000;
-            box-shadow: 0 0 20px #00ff00;
-        }
-    </style>
+    <link rel="stylesheet" href="cyberpunk-web.css">
 </head>
-<body class="loki">
-    <div class="terminal">
-        <a href="https://github.com/Cambrian/cyberpunk-cli" class="github-link">← Back to GitHub</a>
+<body class="cyberpunk-theme-loki">
+    <div class="cyberpunk-terminal">
+        <a href="https://github.com/CambrianTech/cyberpunk-cli" class="cyberpunk-link">← Back to GitHub</a>
         
-        <div class="theme-selector">
+        <div class="cyberpunk-theme-selector">
             <div style="margin-bottom: 10px; font-weight: bold;">THEMES [CTRL+T]</div>
-            <button class="theme-btn" onclick="setTheme('loki')">Loki</button>
-            <button class="theme-btn" onclick="setTheme('matrix')">Matrix</button>
-            <button class="theme-btn" onclick="setTheme('fallout')">Fallout</button>
-            <button class="theme-btn" onclick="setTheme('tron')">Tron</button>
+            <button class="cyberpunk-btn" onclick="CyberpunkDemo.setTheme('loki')">Loki</button>
+            <button class="cyberpunk-btn" onclick="CyberpunkDemo.setTheme('matrix')">Matrix</button>
+            <button class="cyberpunk-btn" onclick="CyberpunkDemo.setTheme('fallout')">Fallout</button>
+            <button class="cyberpunk-btn" onclick="CyberpunkDemo.setTheme('tron')">Tron</button>
         </div>
         
-        <div class="header">
-            <div class="logo">╔═══════════════════════════════════════════════════════════════════════════╗
+        <div class="cyberpunk-header">
+            <div class="cyberpunk-logo">╔═══════════════════════════════════════════════════════════════════════════╗
 ║                                                                           ║
 ║    ██╗      ██████╗ ██╗  ██╗██╗    ████████╗███████╗██████╗ ███╗   ███╗   ║
 ║    ██║     ██╔═══██╗██║ ██╔╝██║    ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║   ║
@@ -236,87 +35,65 @@
 ║                                                                           ║
 ╚═══════════════════════════════════════════════════════════════════════════╝</div>
             
-            <div class="subtitle">
+            <div class="cyberpunk-subtitle">
                 ⚡ CYBERPUNK CLI FRAMEWORK ⚡ INTERACTIVE DEMO ⚡ Try Before You Install ⚡
             </div>
         </div>
         
-        <div class="menu">
-            <div class="menu-item" onclick="selectOption('install')">
+        <div class="cyberpunk-menu">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('install')">
                 <span>▶ Install Python Package</span>
                 <span>pip install cyberpunk-cli</span>
             </div>
-            <div class="menu-item" onclick="selectOption('zero_effort')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('zero_effort')">
                 <span>▶ Zero-Effort Setup</span>
                 <span>Just import cyberpunk_cli</span>
             </div>
-            <div class="menu-item" onclick="selectOption('decorator')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('decorator')">
                 <span>▶ @cyberpunk Decorator</span>
                 <span>Full framework with themes</span>
             </div>
-            <div class="menu-item" onclick="selectOption('click_integration')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('click_integration')">
                 <span>▶ Click Integration</span>
                 <span>Auto-enhance existing CLIs</span>
             </div>
-            <div class="menu-item" onclick="selectOption('web_framework')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('web_framework')">
                 <span>▶ Web Framework</span>
                 <span>Use on websites and web apps</span>
             </div>
-            <div class="menu-item" onclick="selectOption('themes')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('themes')">
                 <span>▶ Theme System</span>
                 <span>Loki, Matrix, Fallout, Tron</span>
             </div>
-            <div class="menu-item" onclick="selectOption('examples')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('examples')">
                 <span>▶ Live Examples</span>
                 <span>See web framework in action</span>
             </div>
-            <div class="menu-item" onclick="selectOption('github')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('github')">
                 <span>▶ View Source</span>
                 <span>GitHub repository</span>
             </div>
         </div>
         
-        <div class="output" id="output">
+        <div class="cyberpunk-output" id="output">
             <div>⚡ LOKI TERMINAL READY ⚡</div>
             <div>Select an option above to see the code examples and documentation.</div>
             <div>Use the theme selector in the top-right to try different cyberpunk themes.</div>
-            <div><span class="cursor"></span></div>
+            <div><span class="cyberpunk-cursor"></span></div>
         </div>
         
-        <div class="footer">
+        <div class="cyberpunk-footer">
             ⚡ Navigation: Mouse Click | Theme Switch: Click Buttons or Ctrl+T | Built by Cambrian ⚡
         </div>
     </div>
 
     <script>
-        let currentTheme = 'loki';
-        let selectedIndex = 0;
-        
-        const themes = {
-            loki: {
-                bg: '#001100',
-                primary: '#00ff00',
-                accent: '#ffff00'
-            },
-            matrix: {
-                bg: '#000',
-                primary: '#00ff00',
-                accent: '#ffffff'
-            },
-            fallout: {
-                bg: '#110800',
-                primary: '#ffcc00',
-                accent: '#ffffff'
-            },
-            tron: {
-                bg: '#000011',
-                primary: '#00ccff',
-                accent: '#ffffff'
-            }
-        };
-
-        const examples = {
-            install: `# Installation
+        // Cyberpunk Demo Manager
+        const CyberpunkDemo = {
+            currentTheme: 'loki',
+            
+            examples: {
+                install: `# Installation
 pip install cyberpunk-cli
 
 # Basic usage
@@ -326,7 +103,7 @@ menu = CyberpunkMenu("My App", theme="loki")
 menu.add_option("deploy", "Deploy", "Deploy to production")
 choice = menu.run()`,
 
-            web_framework: `<!-- Use on websites and web applications -->
+                web_framework: `<!-- Use on websites and web applications -->
 <link rel="stylesheet" href="cyberpunk-web.css">
 <script src="cyberpunk-web.js"></script>
 
@@ -350,7 +127,7 @@ const console = new CyberpunkConsole('my-console', {
 });
 </script>`,
 
-            zero_effort: `# Zero-effort Click enhancement
+                zero_effort: `# Zero-effort Click enhancement
 import cyberpunk_cli  # Just add this line!
 import click
 
@@ -362,7 +139,7 @@ def deploy(env):
 
 # Now has cyberpunk interface automatically!`,
 
-            decorator: `# Full @cyberpunk framework
+                decorator: `# Full @cyberpunk framework
 from cyberpunk_cli import cyberpunk, option
 
 @cyberpunk(theme="loki", theme_switching=True)
@@ -375,7 +152,7 @@ def deploy(env, force):
     else:
         print(f"Deploying to {env}")`,
 
-            click_integration: `# Enhance existing Click apps
+                click_integration: `# Enhance existing Click apps
 from cyberpunk_cli import enhance_click_app
 import click
 
@@ -392,7 +169,7 @@ def build():
 # Add cyberpunk interface
 enhanced_cli = enhance_click_app(cli, theme="loki")`,
 
-            themes: `# Theme system
+                themes: `# Theme system
 from cyberpunk_cli import cyberpunk
 
 # Loki theme (default) - Green/gold Nordic mythology
@@ -410,7 +187,7 @@ from cyberpunk_cli import cyberpunk
 # Runtime theme switching with Ctrl+T
 # Persistent theme preferences`,
 
-            examples: `# DevOps Tool Example
+                examples: `# DevOps Tool Example
 @cyberpunk(theme="loki")
 @option('--env', help='Environment')
 def devops_tool(env):
@@ -429,8 +206,8 @@ def ci_pipeline():
     """Continuous integration tool"""
     pass`,
 
-            github: `# GitHub Repository
-https://github.com/Cambrian/cyberpunk-cli
+                github: `# GitHub Repository
+https://github.com/CambrianTech/cyberpunk-cli
 
 # Key Features:
 ✓ Zero-effort Click integration
@@ -443,76 +220,87 @@ https://github.com/Cambrian/cyberpunk-cli
 
 # Built by Cambrian
 # MIT License`
+            },
+
+            setTheme: function(theme) {
+                this.currentTheme = theme;
+                document.body.className = `cyberpunk-theme-${theme}`;
+                
+                const output = document.getElementById('output');
+                const themeName = theme.charAt(0).toUpperCase() + theme.slice(1);
+                output.innerHTML = `
+                    <div>⚡ THEME SWITCHED TO ${themeName.toUpperCase()} ⚡</div>
+                    <div>Theme successfully changed. Try the different menu options!</div>
+                    <div>Each theme has unique colors and styling inspired by cyberpunk aesthetics.</div>
+                    <div><span class="cyberpunk-cursor"></span></div>
+                `;
+            },
+
+            selectOption: function(option) {
+                const output = document.getElementById('output');
+                const code = this.examples[option] || 'Option not found';
+                
+                output.innerHTML = `
+                    <div>⚡ EXECUTING: ${option.toUpperCase().replace('_', ' ')} ⚡</div>
+                    <pre style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; overflow-x: auto; white-space: pre-wrap;">${code}</pre>
+                    <div>Copy this code and try it in your own projects!</div>
+                    <div><span class="cyberpunk-cursor"></span></div>
+                `;
+
+                // Remove selection from all items
+                document.querySelectorAll('.cyberpunk-menu-item').forEach(item => {
+                    item.classList.remove('selected');
+                });
+                
+                // Add selection to clicked item
+                event.target.closest('.cyberpunk-menu-item').classList.add('selected');
+                
+                if (option === 'github') {
+                    setTimeout(() => {
+                        window.open('https://github.com/CambrianTech/cyberpunk-cli', '_blank');
+                    }, 1000);
+                }
+                
+                if (option === 'examples') {
+                    setTimeout(() => {
+                        window.location.href = 'examples.html';
+                    }, 1000);
+                }
+            },
+
+            init: function() {
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey && e.key === 't') {
+                        e.preventDefault();
+                        const themes = ['loki', 'matrix', 'fallout', 'tron'];
+                        const currentIndex = themes.indexOf(this.currentTheme);
+                        const nextIndex = (currentIndex + 1) % themes.length;
+                        this.setTheme(themes[nextIndex]);
+                    }
+                });
+
+                // Initial load message
+                setTimeout(() => {
+                    const output = document.getElementById('output');
+                    output.innerHTML = `
+                        <div>⚡ CYBERPUNK CLI LIVE DEMO INITIALIZED ⚡</div>
+                        <div>Try clicking the menu options above to see code examples.</div>
+                        <div>Switch themes using the buttons or Ctrl+T keyboard shortcut.</div>
+                        <div>Install: pip install cyberpunk-cli</div>
+                        <div><span class="cyberpunk-cursor"></span></div>
+                    `;
+                }, 1000);
+            }
         };
 
-        function setTheme(theme) {
-            document.body.className = theme;
-            currentTheme = theme;
-            
-            const output = document.getElementById('output');
-            const themeName = theme.charAt(0).toUpperCase() + theme.slice(1);
-            output.innerHTML = `
-                <div>⚡ THEME SWITCHED TO ${themeName.toUpperCase()} ⚡</div>
-                <div>Theme successfully changed. Try the different menu options!</div>
-                <div>Each theme has unique colors and styling inspired by cyberpunk aesthetics.</div>
-                <div><span class="cursor"></span></div>
-            `;
-        }
-
-        function selectOption(option) {
-            const output = document.getElementById('output');
-            const code = examples[option] || 'Option not found';
-            
-            output.innerHTML = `
-                <div>⚡ EXECUTING: ${option.toUpperCase().replace('_', ' ')} ⚡</div>
-                <pre style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 5px;">${code}</pre>
-                <div>Copy this code and try it in your own projects!</div>
-                <div><span class="cursor"></span></div>
-            `;
-
-            // Remove selection from all items
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.classList.remove('selected');
-            });
-            
-            // Add selection to clicked item
-            event.target.closest('.menu-item').classList.add('selected');
-            
-            if (option === 'github') {
-                setTimeout(() => {
-                    window.open('https://github.com/Cambrian/cyberpunk-cli', '_blank');
-                }, 1000);
-            }
-            
-            if (option === 'examples') {
-                setTimeout(() => {
-                    window.location.href = 'examples.html';
-                }, 1000);
-            }
-        }
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === 't') {
-                e.preventDefault();
-                const themes = ['loki', 'matrix', 'fallout', 'tron'];
-                const currentIndex = themes.indexOf(currentTheme);
-                const nextIndex = (currentIndex + 1) % themes.length;
-                setTheme(themes[nextIndex]);
-            }
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            CyberpunkDemo.init();
         });
 
-        // Initial load message
-        setTimeout(() => {
-            const output = document.getElementById('output');
-            output.innerHTML = `
-                <div>⚡ CYBERPUNK CLI LIVE DEMO INITIALIZED ⚡</div>
-                <div>Try clicking the menu options above to see code examples.</div>
-                <div>Switch themes using the buttons or Ctrl+T keyboard shortcut.</div>
-                <div>Install: pip install cyberpunk-cli</div>
-                <div><span class="cursor"></span></div>
-            `;
-        }, 1000);
+        // Make globally accessible for onclick handlers
+        window.CyberpunkDemo = CyberpunkDemo;
     </script>
 </body>
 </html>
