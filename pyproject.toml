@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cyberpunk-cli"
+version = "1.0.0"
+description = "Cyberpunk-themed terminal menu system with multiple retro themes"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "CambrianTech", email = "contact@cambriantech.com"},
+]
+keywords = [
+    "terminal", "menu", "cyberpunk", "retro", "fallout", "matrix", "tron",
+    "cli", "interface", "themes", "ascii", "terminal-ui", "console"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Terminals",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+]
+dependencies = [
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.910",
+]
+
+[project.urls]
+Homepage = "https://github.com/CambrianTech/cyberpunk-cli"
+Documentation = "https://github.com/CambrianTech/cyberpunk-cli#readme"
+Repository = "https://github.com/CambrianTech/cyberpunk-cli"
+"Bug Tracker" = "https://github.com/CambrianTech/cyberpunk-cli/issues"
+
+[project.scripts]
+cyberpunk-demo = "cyberpunk_cli.examples.demo:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cyberpunk_cli*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
