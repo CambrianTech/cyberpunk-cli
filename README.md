@@ -1,24 +1,57 @@
-# 🔥 Cyberpunk CLI
+# Cyberpunk CLI
 
-**Professional terminal menu system with retro cyberpunk aesthetics**
+<div align="center">
 
-![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Rich](https://img.shields.io/badge/rich-terminal-ff69b4.svg)
+```
+   ╔═══════════════════════════════════════════════════╗
+   ║                 CYBERPUNK CLI                     ║
+   ║              Terminal Interface                   ║
+   ║                  Framework                        ║
+   ╚═══════════════════════════════════════════════════╝
+```
 
-A powerful, themeable terminal menu library inspired by retro-futuristic interfaces from Fallout, The Matrix, and Tron. Create stunning cyberpunk-styled CLI applications with full mouse support, responsive layouts, and multiple input methods.
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-green.svg)](https://www.python.org/downloads/)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/Cambrian/cyberpunk-cli)
 
-## ✨ Features
+</div>
 
-- 🎨 **Multiple Retro Themes** - Fallout, Matrix, Tron aesthetics
-- 🖱️ **Full Mouse Support** - Click to select, double-click to execute  
-- ⌨️ **Keyboard Navigation** - Arrow keys, Enter, numbers, ESC
-- 📱 **Responsive Design** - Adapts to terminal size
-- 🎮 **Modern UX** - Smooth animations and visual feedback
-- 🔧 **Easy Integration** - Simple, fluent API
-- 🎯 **Zero Dependencies** - Only requires `rich`
+**Professional cyberpunk-themed terminal interface framework for Python CLI applications. Transform any Click-based CLI into a retro-futuristic terminal experience with zero effort.**
 
-## 🚀 Quick Start
+## Features
+
+### Zero-Effort Enhancement
+```python
+import cyberpunk_cli  # Just add this line
+import click
+
+@click.command()
+def main():
+    """Your existing CLI"""
+    pass
+```
+
+### Full Framework
+```python
+from cyberpunk_cli import cyberpunk, option
+
+@cyberpunk(theme="loki", theme_switching=True)
+@option('--deploy', help='Deploy to production')
+def main(deploy):
+    """Professional CLI with cyberpunk interface"""
+    pass
+```
+
+### Core Features
+- **Multiple Retro Themes** - Loki, Matrix, Fallout, Tron aesthetics
+- **Full Mouse Support** - Click to select, double-click to execute  
+- **Keyboard Navigation** - Arrow keys, Enter, numbers, ESC
+- **Responsive Design** - Adapts to terminal size
+- **Modern UX** - Smooth animations and visual feedback
+- **Easy Integration** - Simple, fluent API
+- **Click Integration** - Auto-enhance existing Click applications
+
+## Quick Start
 
 ### Installation
 
@@ -31,14 +64,14 @@ pip install cyberpunk-cli
 ```python
 from cyberpunk_cli import CyberpunkMenu
 
-# Create menu with Fallout theme
-menu = CyberpunkMenu("My Application", theme="fallout")
+# Create menu with Loki theme (default)
+menu = CyberpunkMenu("My Application", theme="loki")
 
 # Add options with fluent interface
-menu.add_option("deploy", "🚀 Deploy", "Deploy to production") \\
-    .add_option("test", "🧪 Test", "Run test suite") \\
-    .add_option("build", "🔨 Build", "Build application") \\
-    .add_separator() \\
+menu.add_option("deploy", "Deploy", "Deploy to production") \
+    .add_option("test", "Test", "Run test suite") \
+    .add_option("build", "Build", "Build application") \
+    .add_separator() \
     .add_exit()
 
 # Run and get selection
@@ -50,158 +83,192 @@ elif choice == "test":
     print("Running tests...")
 ```
 
-## 🎨 Available Themes
+## Available Themes
 
-### 🏚️ Fallout Theme
-Vault-Tec terminal interface with amber colors and retro-futuristic styling.
+### Loki Theme (Default)
+Green and gold terminal aesthetics with Nordic mythology styling.
 
-### 💚 Matrix Theme  
+### Matrix Theme  
 Digital rain aesthetic with green code and neural network terminology.
 
-### 💙 Tron Theme
+### Fallout Theme
+Vault-Tec terminal interface with amber colors and retro-futuristic styling.
+
+### Tron Theme
 Neon blue cyberpunk grid with light cycle inspired design.
 
-## 🖱️ Input Methods
+## Input Methods
 
 - **Arrow Keys** - Navigate up/down through options
 - **Enter** - Execute selected option
 - **Numbers** - Direct selection (0-9)
 - **Mouse Click** - Click any option to select it
 - **Mouse Double-Click** - Double-click to execute immediately
+- **Ctrl+T** - Quick theme switcher
 - **ESC/Q** - Exit the menu
 
-## 📋 Advanced Usage
+## Advanced Usage
 
-### Custom Options and Separators
+### Command Groups
+```python
+from cyberpunk_cli import cyberpunk, group, option
+
+@group()
+def cli():
+    """Main CLI group"""
+    pass
+
+@cli.command()
+@option('--env', help='Environment to deploy')
+def deploy(env):
+    """Deploy application"""
+    print(f"Deploying to {env}")
+
+@cli.command() 
+def status():
+    """Check application status"""
+    print("System operational")
+
+if __name__ == "__main__":
+    cyberpunk.enhance_group(cli)
+```
+
+### Theme Control
+```python
+# Set default theme, allow user switching
+@cyberpunk(theme="loki", theme_switching=True)
+
+# Lock theme, prevent user changes  
+@cyberpunk(theme="matrix", theme_switching=False)
+
+# Use saved preference
+@cyberpunk(theme_switching=True)
+```
+
+### Click Integration
+
+#### Automatic Enhancement
+Any existing Click application can be enhanced by simply importing cyberpunk_cli:
 
 ```python
-from cyberpunk_cli import CyberpunkMenu
+import cyberpunk_cli  # Automatically enhances Click commands
+import click
 
-menu = CyberpunkMenu("Advanced Demo", theme="matrix")
+@click.group()
+def cli():
+    pass
 
-# Add grouped options
-menu.add_option("new", "📄 New File", "Create a new file") \\
-    .add_option("open", "📂 Open", "Open existing file") \\
-    .add_option("save", "💾 Save", "Save current file") \\
-    .add_separator() \\
-    .add_option("settings", "⚙️ Settings", "Configure application") \\
-    .add_option("help", "❓ Help", "Show help documentation") \\
-    .add_exit("🚪 Quit", "Exit application")
-
-choice = menu.run()
+@cli.command()
+@click.option('--verbose', is_flag=True)
+def process(verbose):
+    """Process data"""
+    pass
 ```
 
-### Theme Switching
-
+#### Manual Enhancement
 ```python
-from cyberpunk_cli import theme_manager, CyberpunkMenu
+from cyberpunk_cli import enhance_click_app
+import click
 
-# List available themes
-themes = theme_manager.list_themes()
-print(f"Available themes: {themes}")
+@click.command()
+def original_cli():
+    """Original Click CLI"""
+    pass
 
-# Switch theme
-theme_manager.set_theme("tron")
-
-# Create menu with new theme
-menu = CyberpunkMenu("Tron Interface")
+# Enhance existing Click command
+enhanced_cli = enhance_click_app(original_cli, theme="loki")
 ```
 
-### Creating Custom Themes
+## Examples
 
+### DevOps Tool
 ```python
-from cyberpunk_cli import BaseTheme
-from rich.text import Text
-from rich.panel import Panel
+from cyberpunk_cli import cyberpunk, option
 
-class CustomTheme(BaseTheme):
-    def __init__(self):
-        super().__init__()
-        self.name = "custom"
-        self.description = "My custom theme"
-    
-    def get_colors(self):
-        return {
-            "primary": "purple",
-            "secondary": "magenta", 
-            "accent": "white",
-            # ... more colors
-        }
-    
-    def render_logo(self, console):
-        logo = "MY CUSTOM LOGO"
-        console.print(Text(logo, style="bold purple"))
-    
-    # Implement other required methods...
-
-# Register custom theme
-from cyberpunk_cli import theme_manager
-theme_manager.register_theme(CustomTheme())
+@cyberpunk(theme="loki")
+@option('--env', help='Target environment')
+@option('--force', is_flag=True, help='Force deployment')
+def deploy(env, force):
+    """Deploy to specified environment"""
+    if force:
+        print(f"Force deploying to {env}")
+    else:
+        print(f"Deploying to {env}")
 ```
 
-## 🎮 Demo
-
-Try the interactive demo to see all themes and features:
-
-```bash
-cyberpunk-demo
-```
-
-Or run the demo programmatically:
-
+### Development Console
 ```python
-from cyberpunk_cli.examples.demo import main
-main()
+from cyberpunk_cli import cyberpunk
+
+@cyberpunk(theme="matrix", theme_switching=False)
+def debug_console():
+    """Development debug console"""
+    print("Debug console initialized")
+    print("System diagnostics running...")
 ```
 
-## 🔧 API Reference
+## API Reference
 
-### CyberpunkMenu
+### Decorators
+- `@cyberpunk` - Main decorator for CLI enhancement
+- `@option` - Command option definition
+- `@group` - Command group definition
 
-Main menu class with fluent interface.
+### Functions
+- `enhance_click_app()` - Enhance existing Click applications
+- `set_global_theme()` - Set theme globally
+- `get_theme_list()` - List available themes
 
-#### Constructor
-```python
-CyberpunkMenu(title: str = "Cyberpunk Menu", theme: str = "fallout")
+### Classes
+- `CyberpunkMenu` - Menu interface class
+- `CyberpunkConfig` - Configuration management
+- `ThemeManager` - Theme switching and persistence
+
+## Configuration
+
+### Global Configuration
+```json
+{
+  "theme": "loki",
+  "mouse_support": true,
+  "animations": true,
+  "compact_mode": false
+}
 ```
 
-#### Methods
-- `add_option(key, name, description)` - Add menu option
-- `add_separator()` - Add visual separator  
-- `add_exit(name, description)` - Add exit option
-- `run()` - Display menu and return selected key
-
-### Theme Manager
-
-Global theme management.
-
-```python
-from cyberpunk_cli import theme_manager
-
-theme_manager.set_theme("matrix")          # Switch theme
-theme_manager.get_theme()                  # Get current theme
-theme_manager.list_themes()                # List available themes
-theme_manager.register_theme(custom_theme) # Add custom theme
+### Project Configuration
+```json
+{
+  "theme": "matrix",
+  "custom_title": "My App v2.0"
+}
 ```
 
-## 🎯 Use Cases
+## Use Cases
 
 Perfect for:
-- 🚀 **DevOps Tools** - Deployment, monitoring, CI/CD interfaces
-- 🎮 **Game Development** - In-game terminals, debug menus
-- 🔧 **System Administration** - Server management, diagnostics
-- 📊 **Data Science** - Model training, analysis tool selection
-- 🎨 **Creative Tools** - Asset pipelines, rendering farms
-- 🔬 **Research Applications** - Experiment runners, data processors
+- **DevOps Tools** - Deployment, monitoring, CI/CD interfaces
+- **Game Development** - In-game terminals, debug menus
+- **System Administration** - Server management, diagnostics
+- **Data Science** - Model training, analysis tool selection
+- **Creative Tools** - Asset pipelines, rendering farms
+- **Research Applications** - Experiment runners, data processors
 
-## 🤝 Contributing
+## Requirements
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+- Python 3.8 or higher
+- Rich terminal library
+- Click framework
+- Modern terminal with mouse support
+
+## Contributing
+
+Contributions welcome. Please read CONTRIBUTING.md for guidelines.
 
 ### Development Setup
 
 ```bash
-git clone https://github.com/CambrianTech/cyberpunk-cli.git
+git clone https://github.com/Cambrian/cyberpunk-cli.git
 cd cyberpunk-cli
 pip install -e ".[dev]"
 ```
@@ -214,15 +281,11 @@ black cyberpunk_cli/
 flake8 cyberpunk_cli/
 ```
 
-## 📝 License
+## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License - see LICENSE file for details.
 
-## 🌟 Star History
-
-If you find this project useful, please consider giving it a star! ⭐
-
-## 🔗 Related Projects
+## Related Projects
 
 - [Rich](https://github.com/Textualize/rich) - Rich text and beautiful formatting
 - [Click](https://github.com/pallets/click) - Command line interface creation kit
@@ -230,6 +293,11 @@ If you find this project useful, please consider giving it a star! ⭐
 
 ---
 
-**Built with ❤️ by [CambrianTech](https://github.com/CambrianTech)**
+<div align="center">
 
-*Bringing retro-futuristic aesthetics to modern terminal interfaces*
+**Cyberpunk CLI Framework**  
+*Professional terminal interfaces for the digital age*
+
+Built by **Cambrian**
+
+</div>
