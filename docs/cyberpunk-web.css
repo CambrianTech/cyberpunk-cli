@@ -1,6 +1,14 @@
 /* Cyberpunk CLI Web Framework */
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400&display=swap');
 
+/* Global Reset for Full Coverage */
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+}
+
 /* Base Terminal Styles */
 .cyberpunk-terminal {
     font-family: 'Share Tech Mono', monospace;
