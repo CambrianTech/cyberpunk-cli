@@ -225,20 +225,26 @@ https://github.com/CambrianTech/cyberpunk-cli
 
             setTheme: function(theme) {
                 this.currentTheme = theme;
-                document.body.className = `cyberpunk-theme-${theme}`;
+                if (document.body) {
+                    document.body.className = `cyberpunk-theme-${theme}`;
+                }
                 
                 const output = document.getElementById('output');
-                const themeName = theme.charAt(0).toUpperCase() + theme.slice(1);
-                output.innerHTML = `
-                    <div>⚡ THEME SWITCHED TO ${themeName.toUpperCase()} ⚡</div>
-                    <div>Theme successfully changed. Try the different menu options!</div>
-                    <div>Each theme has unique colors and styling inspired by cyberpunk aesthetics.</div>
-                    <div><span class="cyberpunk-cursor"></span></div>
-                `;
+                if (output) {
+                    const themeName = theme.charAt(0).toUpperCase() + theme.slice(1);
+                    output.innerHTML = `
+                        <div>⚡ THEME SWITCHED TO ${themeName.toUpperCase()} ⚡</div>
+                        <div>Theme successfully changed. Try the different menu options!</div>
+                        <div>Each theme has unique colors and styling inspired by cyberpunk aesthetics.</div>
+                        <div><span class="cyberpunk-cursor"></span></div>
+                    `;
+                }
             },
 
             selectOption: function(option, event) {
                 const output = document.getElementById('output');
+                if (!output) return;
+                
                 const code = this.examples[option] || 'Option not found';
                 
                 output.innerHTML = `
