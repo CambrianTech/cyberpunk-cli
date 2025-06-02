@@ -1,0 +1,7 @@
+{
+  "name": "cyberpunk-cli",
+  "version": "0.1.7",
+  "description": "Cyberpunk-themed terminal menu system with multiple retro themes",
+  "homepage": "https://github.com/CambrianTech/cyberpunk-cli",
+  "license": "MIT"
+}

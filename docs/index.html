@@ -41,7 +41,7 @@
             </div>
             
             <div class="cyberpunk-version" style="text-align: center; margin: 15px 0; padding: 10px; border: 2px solid var(--cyberpunk-accent); background: rgba(0,255,0,0.1); font-size: 18px; font-weight: bold;">
-                🚀 VERSION <span id="version-info" style="color: #00ff00; text-shadow: 0 0 10px #00ff00;">v2.0.0</span> 🚀 DEPLOYED: <span id="deploy-time" style="color: #ffff00;">LOADING...</span>
+                🧪 BETA <span id="version-info" style="color: #00ff00; text-shadow: 0 0 10px #00ff00;">v0.1.7</span> 🧪 DEPLOYED: <span id="deploy-time" style="color: #ffff00;">LOADING...</span>
             </div>
         </div>
         
@@ -311,7 +311,7 @@ https://github.com/CambrianTech/cyberpunk-cli
                 }, 1000);
             },
 
-            updateVersion: function() {
+            updateVersion: async function() {
                 // Show current deployment time
                 const now = new Date();
                 const deployTime = now.toLocaleString('en-US', { 
@@ -328,10 +328,22 @@ https://github.com/CambrianTech/cyberpunk-cli
                     deployEl.title = `Page loaded: ${now.toLocaleString()}`;
                 }
                 
-                // Keep version static but visible
-                const versionEl = document.getElementById('version-info');
-                if (versionEl) {
-                    versionEl.title = `Version 2.0.0 - Major update with fixes`;
+                // Fetch version from package.json
+                try {
+                    const response = await fetch('./package.json');
+                    const packageData = await response.json();
+                    const versionEl = document.getElementById('version-info');
+                    if (versionEl && packageData.version) {
+                        versionEl.textContent = `v${packageData.version}`;
+                        versionEl.title = `Beta v${packageData.version} - Active development with continuum`;
+                    }
+                } catch (error) {
+                    console.log('Could not fetch version from package.json');
+                    // Fallback to static version
+                    const versionEl = document.getElementById('version-info');
+                    if (versionEl) {
+                        versionEl.title = `Beta v0.1.7 - Active development with continuum`;
+                    }
                 }
             }
         };

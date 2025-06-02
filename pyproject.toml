@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cyberpunk-cli"
-version = "1.0.0"
+version = "0.1.7"
 description = "Cyberpunk-themed terminal menu system with multiple retro themes"
 readme = "README.md"
 requires-python = ">=3.8"
