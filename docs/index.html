@@ -37,7 +37,11 @@
 ╚═══════════════════════════════════════════════════════════════════════════╝</div>
             
             <div class="cyberpunk-subtitle">
-                ⚡ CYBERPUNK CLI FRAMEWORK <span id="version-info">v1.1.0</span> ⚡ INTERACTIVE DEMO ⚡ Try Before You Install ⚡
+                ⚡ CYBERPUNK CLI FRAMEWORK ⚡ INTERACTIVE DEMO ⚡ Try Before You Install ⚡
+            </div>
+            
+            <div class="cyberpunk-version" style="text-align: center; margin: 15px 0; padding: 10px; border: 2px solid var(--cyberpunk-accent); background: rgba(0,255,0,0.1); font-size: 18px; font-weight: bold;">
+                🚀 VERSION <span id="version-info" style="color: #00ff00; text-shadow: 0 0 10px #00ff00;">v2.0.0</span> 🚀 DEPLOYED: <span id="deploy-time" style="color: #ffff00;">LOADING...</span>
             </div>
         </div>
         
@@ -308,19 +312,26 @@ https://github.com/CambrianTech/cyberpunk-cli
             },
 
             updateVersion: function() {
-                // Auto-generate version based on build date
-                const buildDate = new Date();
-                const year = buildDate.getFullYear();
-                const month = String(buildDate.getMonth() + 1).padStart(2, '0');
-                const day = String(buildDate.getDate()).padStart(2, '0');
-                const hour = String(buildDate.getHours()).padStart(2, '0');
-                const minute = String(buildDate.getMinutes()).padStart(2, '0');
+                // Show current deployment time
+                const now = new Date();
+                const deployTime = now.toLocaleString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric', 
+                    hour: 'numeric', 
+                    minute: '2-digit',
+                    hour12: true
+                });
                 
-                const version = `v${year}.${month}.${day}-${hour}${minute}`;
+                const deployEl = document.getElementById('deploy-time');
+                if (deployEl) {
+                    deployEl.textContent = deployTime;
+                    deployEl.title = `Page loaded: ${now.toLocaleString()}`;
+                }
+                
+                // Keep version static but visible
                 const versionEl = document.getElementById('version-info');
                 if (versionEl) {
-                    versionEl.textContent = version;
-                    versionEl.title = `Built: ${buildDate.toLocaleString()}`;
+                    versionEl.title = `Version 2.0.0 - Major update with fixes`;
                 }
             }
         };
