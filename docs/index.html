@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyberpunk CLI - Live Demo</title>
     <link rel="stylesheet" href="cyberpunk-web.css">
+    <script src="cyberpunk-web.js"></script>
 </head>
 <body class="cyberpunk-theme-loki">
     <div class="cyberpunk-terminal">
@@ -41,35 +42,35 @@
         </div>
         
         <div class="cyberpunk-menu">
-            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('install')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('install', event)">
                 <span>▶ Install Python Package</span>
                 <span>pip install cyberpunk-cli</span>
             </div>
-            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('zero_effort')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('zero_effort', event)">
                 <span>▶ Zero-Effort Setup</span>
                 <span>Just import cyberpunk_cli</span>
             </div>
-            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('decorator')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('decorator', event)">
                 <span>▶ @cyberpunk Decorator</span>
                 <span>Full framework with themes</span>
             </div>
-            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('click_integration')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('click_integration', event)">
                 <span>▶ Click Integration</span>
                 <span>Auto-enhance existing CLIs</span>
             </div>
-            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('web_framework')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('web_framework', event)">
                 <span>▶ Web Framework</span>
                 <span>Use on websites and web apps</span>
             </div>
-            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('themes')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('themes', event)">
                 <span>▶ Theme System</span>
                 <span>Loki, Matrix, Fallout, Tron</span>
             </div>
-            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('examples')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('examples', event)">
                 <span>▶ Live Examples</span>
                 <span>See web framework in action</span>
             </div>
-            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('github')">
+            <div class="cyberpunk-menu-item" onclick="CyberpunkDemo.selectOption('github', event)">
                 <span>▶ View Source</span>
                 <span>GitHub repository</span>
             </div>
@@ -116,12 +117,12 @@ const terminal = new CyberpunkTerminal('my-terminal', {
 });
 
 terminal.setTitle('My Web App')
-    .addMenuItem('dashboard', 'Dashboard', 'View main dashboard', showDashboard)
-    .addMenuItem('settings', 'Settings', 'Application settings', showSettings)
-    .addMenuItem('logout', 'Logout', 'Sign out of application', logout);
+    .addMenuItem('dashboard', 'Dashboard', 'View main dashboard', () => console.log('Dashboard clicked'))
+    .addMenuItem('settings', 'Settings', 'Application settings', () => console.log('Settings clicked'))
+    .addMenuItem('logout', 'Logout', 'Sign out of application', () => console.log('Logout clicked'));
 
 // Or create console widgets
-const console = new CyberpunkConsole('my-console', {
+const debugConsole = new CyberpunkConsole('my-console', {
     theme: 'matrix',
     title: 'Debug Console'
 });
@@ -236,7 +237,7 @@ https://github.com/CambrianTech/cyberpunk-cli
                 `;
             },
 
-            selectOption: function(option) {
+            selectOption: function(option, event) {
                 const output = document.getElementById('output');
                 const code = this.examples[option] || 'Option not found';
                 
@@ -253,7 +254,9 @@ https://github.com/CambrianTech/cyberpunk-cli
                 });
                 
                 // Add selection to clicked item
-                event.target.closest('.cyberpunk-menu-item').classList.add('selected');
+                if (event && event.target) {
+                    event.target.closest('.cyberpunk-menu-item').classList.add('selected');
+                }
                 
                 if (option === 'github') {
                     setTimeout(() => {

@@ -24,9 +24,11 @@ class CyberpunkTerminal {
         try {
             // Try to load from the same source as Python
             const response = await fetch('themes/theme_config.json');
+            if (!response.ok) throw new Error('Failed to fetch');
             this.themeConfig = await response.json();
         } catch (error) {
-            // Fallback to embedded config
+            // Fallback to embedded config (e.g., when using file:// protocol)
+            console.log('Using embedded theme config (fetch failed for file:// protocol)');
             this.themeConfig = this.getEmbeddedThemeConfig();
         }
     }
