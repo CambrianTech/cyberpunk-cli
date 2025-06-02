@@ -37,7 +37,7 @@
 ╚═══════════════════════════════════════════════════════════════════════════╝</div>
             
             <div class="cyberpunk-subtitle">
-                ⚡ CYBERPUNK CLI FRAMEWORK ⚡ INTERACTIVE DEMO ⚡ Try Before You Install ⚡
+                ⚡ CYBERPUNK CLI FRAMEWORK <span id="version-info">v1.1.0</span> ⚡ INTERACTIVE DEMO ⚡ Try Before You Install ⚡
             </div>
         </div>
         
@@ -278,6 +278,9 @@ https://github.com/CambrianTech/cyberpunk-cli
             },
 
             init: function() {
+                // Auto-update version with build timestamp
+                this.updateVersion();
+                
                 // Keyboard shortcuts
                 document.addEventListener('keydown', (e) => {
                     if (e.ctrlKey && e.key === 't') {
@@ -292,14 +295,33 @@ https://github.com/CambrianTech/cyberpunk-cli
                 // Initial load message
                 setTimeout(() => {
                     const output = document.getElementById('output');
-                    output.innerHTML = `
-                        <div>⚡ CYBERPUNK CLI LIVE DEMO INITIALIZED ⚡</div>
-                        <div>Try clicking the menu options above to see code examples.</div>
-                        <div>Switch themes using the buttons or Ctrl+T keyboard shortcut.</div>
-                        <div>Install: pip install cyberpunk-cli</div>
-                        <div><span class="cyberpunk-cursor"></span></div>
-                    `;
+                    if (output) {
+                        output.innerHTML = `
+                            <div>⚡ CYBERPUNK CLI LIVE DEMO INITIALIZED ⚡</div>
+                            <div>Try clicking the menu options above to see code examples.</div>
+                            <div>Switch themes using the buttons or Ctrl+T keyboard shortcut.</div>
+                            <div>Install: pip install cyberpunk-cli</div>
+                            <div><span class="cyberpunk-cursor"></span></div>
+                        `;
+                    }
                 }, 1000);
+            },
+
+            updateVersion: function() {
+                // Auto-generate version based on build date
+                const buildDate = new Date();
+                const year = buildDate.getFullYear();
+                const month = String(buildDate.getMonth() + 1).padStart(2, '0');
+                const day = String(buildDate.getDate()).padStart(2, '0');
+                const hour = String(buildDate.getHours()).padStart(2, '0');
+                const minute = String(buildDate.getMinutes()).padStart(2, '0');
+                
+                const version = `v${year}.${month}.${day}-${hour}${minute}`;
+                const versionEl = document.getElementById('version-info');
+                if (versionEl) {
+                    versionEl.textContent = version;
+                    versionEl.title = `Built: ${buildDate.toLocaleString()}`;
+                }
             }
         };
 
